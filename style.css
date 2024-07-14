@@ -1,0 +1,32 @@
+:root {
+    --main: #0051ff;
+}
+body {
+    margin: 0;
+}
+header {
+    display: flex;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 150px;
+    background: var(--main);
+}
+/* NETWORK*/
+#topo-canvas {
+    width: 800px;
+    height: 600px;
+    border: 1px solid #ccc;
+  }
+  
+  #node-form, #link-form {
+    margin-top: 20px;
+  }
+  
+  #node-form input, #link-form select {
+    width: 200px;
+  }
+  
+  #add-node, #add-link {
+    margin-left: 10px;
+  }

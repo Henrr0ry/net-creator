@@ -1,0 +1,35 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <title>Net Creator</title>
+        <meta name="description" content="Tool for creation computer network topology">
+        <meta name="author" content="Henrr0ry">
+        <link rel="stylesheet" href="style.css">
+    </head>
+    <body>
+        <header>
+            <div></div>
+        </header>
+         <!-- create a container for the topology canvas -->
+        <div id="topo-canvas"></div>
+        
+        <!-- create a form to input node and link information -->
+        <form id="node-form">
+            <label for="node-name">Node Name:</label>
+            <input type="text" id="node-name" placeholder="Enter node name">
+            <button type="button" id="add-node">Add Node</button>
+        </form>
+        
+        <!-- create a form to input link information -->
+        <form id="link-form">
+            <label for="link-source">Source Node:</label>
+            <select id="link-source"></select>
+            <label for="link-target">Target Node:</label>
+            <select id="link-target"></select>
+            <button type="button" id="add-link">Add Link</button>
+        </form>
+        
+        <!-- include JavaScript files -->
+        <script src="script.js"></script>
+            </body>
+</html>
