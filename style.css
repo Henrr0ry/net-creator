@@ -13,10 +13,15 @@ header {
     background: var(--main);
 }
 .list {
-  height: 50px;
+  height: 64px;
   width: 80%;
   border-radius: 20px;
+  padding: 5px;
   background: white;
+}
+.list .device {
+  display: inline-block !important;
+  position: relative !important;
 }
 /* NETWORK*/
 #view {
@@ -26,7 +31,13 @@ header {
 }
 
 .device {
-  width: 50px;
-  height: 50px;
+  width: 64px;
+  height: 64px;
   background: red;
+  position: absolute;
+}
+.device img {
+  width: 64px;
+  height: 64px;
+  margin: 0;
 }
