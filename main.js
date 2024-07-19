@@ -20,7 +20,7 @@ function RespawnObjects() {
 
 RespawnObjects();
 
-
+/*
 Array.prototype.forEach.call(list.children, (element) => {
   if (element.classList.contains('device')) {
     element.addEventListener('dragstart', (e) => {
@@ -37,45 +37,45 @@ view.addEventListener('drop', (e) => {
   e.preventDefault();
   const deviceHTML = e.dataTransfer.getData('text');
   view.innerHTML += deviceHTML;
-});
+});*/
 //prototype
-/*
+
 Array.prototype.forEach.call(list.children, (element) => {
     if (element.classList.contains('device')) {
       element.addEventListener('dragstart', (e) => {
         e.dataTransfer.setData('text', element.outerHTML);
       });
     }
-  });
+});
 
-  // Make the #view div droppable
-  view.addEventListener('dragover', (e) => {
-    e.preventDefault();
-  });
-  view.addEventListener('drop', (e) => {
-    e.preventDefault();
-    const deviceHTML = e.dataTransfer.getData('text');
-    const droppedElement = document.createElement('div');
-    droppedElement.innerHTML = deviceHTML;
-    const rect = view.getBoundingClientRect();
-    const x = e.clientX - rect.left;
-    const y = e.clientY - rect.top;
-    droppedElement.style.position = 'absolute';
-    droppedElement.style.top = `${y}px`;
-    droppedElement.style.left = `${x}px`;
-    view.appendChild(droppedElement);
+view.addEventListener('dragover', (e) => {
+  e.preventDefault();
+});
 
-    // Add event listeners to move the dropped element
-    droppedElement.addEventListener('mousedown', (e) => {
-      const startX = e.clientX;
-      const startY = e.clientY;
-      document.addEventListener('mousemove', (e) => {
-        droppedElement.style.top = `${e.clientY - startY}px`;
-        droppedElement.style.left = `${e.clientX - startX}px`;
-      });
-      document.addEventListener('mouseup', () => {
-        document.removeEventListener('mousemove', null, false);
-      });
+view.addEventListener('drop', (e) => {
+  e.preventDefault();
+  const deviceHTML = e.dataTransfer.getData('text');
+  deviceHTML.draggable = false;
+  const droppedElement = document.createElement('div');
+  droppedElement.innerHTML = deviceHTML;
+  const rect = view.getBoundingClientRect();
+  const x = e.clientX - rect.left;
+  const y = e.clientY - rect.top;
+  droppedElement.style.position = 'absolute';
+  droppedElement.style.top = `${y}px`;
+  droppedElement.style.left = `${x}px`;
+  view.appendChild(droppedElement);
+
+  // Add event listeners to move the dropped element
+  droppedElement.addEventListener('mousedown', (e) => {
+    const startX = e.clientX;
+    const startY = e.clientY;
+    document.addEventListener('mousemove', (e) => {
+      droppedElement.style.top = `${e.clientY - 32}px`;
+      droppedElement.style.left = `${e.clientX - 32}px`;
+    });
+    document.addEventListener('mouseup', () => {
+      document.removeEventListener('mousemove', null, false);
     });
   });
-  */
+});
