@@ -20,7 +20,8 @@ function RespawnObjects() {
 
 RespawnObjects();
 
-/*
+//CREATE OBJECT
+
 Array.prototype.forEach.call(list.children, (element) => {
   if (element.classList.contains('device')) {
     element.addEventListener('dragstart', (e) => {
@@ -28,25 +29,16 @@ Array.prototype.forEach.call(list.children, (element) => {
     });
   }
 });
-
-// Make the #view div droppable
+/*
 view.addEventListener('dragover', (e) => {
   e.preventDefault();
-});
-view.addEventListener('drop', (e) => {
-  e.preventDefault();
-  const deviceHTML = e.dataTransfer.getData('text');
-  view.innerHTML += deviceHTML;
+  if (e.target === view) {
+    const dx = e.clientX - 32;
+    const dy = e.clientY - 32;
+    droppedElement.style.top = `${dy}px`;
+    droppedElement.style.left = `${dx}px`;
+  }
 });*/
-//prototype
-
-Array.prototype.forEach.call(list.children, (element) => {
-    if (element.classList.contains('device')) {
-      element.addEventListener('dragstart', (e) => {
-        e.dataTransfer.setData('text', element.outerHTML);
-      });
-    }
-});
 
 view.addEventListener('dragover', (e) => {
   e.preventDefault();
@@ -55,27 +47,21 @@ view.addEventListener('dragover', (e) => {
 view.addEventListener('drop', (e) => {
   e.preventDefault();
   const deviceHTML = e.dataTransfer.getData('text');
-  deviceHTML.draggable = false;
-  const droppedElement = document.createElement('div');
-  droppedElement.innerHTML = deviceHTML;
+  const parser = new DOMParser();
+  const droppedElement = parser.parseFromString(deviceHTML, "text/html").body.children[0];
+  droppedElement.draggable = true;
   const rect = view.getBoundingClientRect();
-  const x = e.clientX - rect.left;
-  const y = e.clientY - rect.top;
+  const x = e.clientX - 32;
+  const y = e.clientY - 32;
   droppedElement.style.position = 'absolute';
   droppedElement.style.top = `${y}px`;
   droppedElement.style.left = `${x}px`;
   view.appendChild(droppedElement);
 
-  // Add event listeners to move the dropped element
-  droppedElement.addEventListener('mousedown', (e) => {
-    const startX = e.clientX;
-    const startY = e.clientY;
-    document.addEventListener('mousemove', (e) => {
-      droppedElement.style.top = `${e.clientY - 32}px`;
-      droppedElement.style.left = `${e.clientX - 32}px`;
-    });
-    document.addEventListener('mouseup', () => {
-      document.removeEventListener('mousemove', null, false);
-    });
-  });
+  droppedElement.addEventListener('dragstart', (e) => {
+    e.dataTransfer.setData('text', droppedElement.outerHTML);
+  })
+  droppedElement.addEventListener('dragend', (e) => {
+    droppedElement.remove();
+  })
 });

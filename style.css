@@ -5,12 +5,13 @@ body {
     margin: 0;
 }
 header {
-    display: flex;
+  position: relative;
     top: 0;
     left: 0;
     width: 100%;
     height: 150px;
     background: var(--main);
+    z-index: 10;
 }
 .list {
   height: 64px;
@@ -25,9 +26,13 @@ header {
 }
 /* NETWORK*/
 #view {
-  min-height: calc(100vh - 150px);
-  width: 100%;
+  min-height: calc(100vh - 180px);
+  width: calc(100% - 30px);
   background: white;
+  background-image: linear-gradient(#cccccc 2px, transparent 2px), linear-gradient(90deg, #cccccc 2px, transparent 2px);
+  background-size: 128px 128px;
+  border: solid #cccccc 5px;
+  margin: 10px;
 }
 
 .device {
