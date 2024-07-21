@@ -1,5 +1,6 @@
 :root {
     --main: #0051ff;
+    --second: #002c8b;
 }
 body {
     margin: 0;
@@ -23,7 +24,33 @@ header {
 .list .device {
   display: inline-block !important;
   position: relative !important;
+} 
+/*  TOOLBAR */
+.toolbar {
+  display: inline-block;
+  width: 100%;
+  height: 35px;
+  background-color: var(--second);
 }
+.toolbar button {
+  height: 35px;
+  width: 100px;
+  border: none;
+  background: var(--second);
+  color: white;
+  font-size: 25px;
+}
+.toolbar button.selected {
+  background: var(--main);
+}
+
+#tbdetails div.c {
+  display: none;
+}
+#tbdetails div.selected {
+  display: block;
+}
+
 /* NETWORK*/
 #view {
   min-height: calc(100vh - 180px);

@@ -19,6 +19,24 @@ function RespawnObjects() {
 }
 
 RespawnObjects();
+//TOOLBAR
+let toolbar = document.getElementById("toolbar");
+let tbdetails = document.getElementById("tbdetails");
+
+function toolupdate(id) {
+  Array.prototype.forEach.call(toolbar.children, element => {
+    if (element.id == "t" + id)
+      element.classList.add("selected");
+    else
+      element.classList.remove("selected");
+  });
+  Array.prototype.forEach.call(tbdetails.children, element => {
+    if (element.id == "c" + id)
+      element.classList.add("selected");
+    else
+      element.classList.remove("selected");
+  });
+}
 
 //CREATE OBJECT
 
@@ -29,16 +47,6 @@ Array.prototype.forEach.call(list.children, (element) => {
     });
   }
 });
-/*
-view.addEventListener('dragover', (e) => {
-  e.preventDefault();
-  if (e.target === view) {
-    const dx = e.clientX - 32;
-    const dy = e.clientY - 32;
-    droppedElement.style.top = `${dy}px`;
-    droppedElement.style.left = `${dx}px`;
-  }
-});*/
 
 view.addEventListener('dragover', (e) => {
   e.preventDefault();
@@ -64,4 +72,35 @@ view.addEventListener('drop', (e) => {
   droppedElement.addEventListener('dragend', (e) => {
     droppedElement.remove();
   })
+});
+
+// CONTEXT MENU
+view.forEach((child) => {
+  child.addEventListener('contextmenu', (event) => {
+    // Prevent the default context menu from appearing
+    event.preventDefault();
+
+    // Create a popup to display the menu
+    const popup = document.createElement('div');
+    popup.innerHTML = `
+      <ul id="menu">
+        <li><a href="#" id="item1">Item 1</a></li>
+        <li><a href="#" id="item2">Item 2</a></li>
+        <li><a href="#" id="item3">Item 3</a></li>
+      </ul>
+    `;
+    popup.style.position = 'absolute';
+    popup.style.top = `${event.clientY}px`;
+    popup.style.left = `${event.clientX}px`;
+    document.body.appendChild(popup);
+
+    // Add event listener to each menu item
+    const menuItems = popup.querySelectorAll('#menu a');
+    menuItems.forEach((menuItem) => {
+      menuItem.addEventListener('click', (event) => {
+        // Handle the click event for each menu item
+        console.log(`Menu item ${menuItem.textContent} clicked`);
+      });
+    });
+  });
 });
