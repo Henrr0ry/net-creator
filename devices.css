@@ -1,0 +1,29 @@
+#view {
+    min-height: calc(100vh - 180px);
+    width: calc(100% - 30px);
+    background: white;
+    background-image: linear-gradient(#cccccc 2px, transparent 2px), linear-gradient(90deg, #cccccc 2px, transparent 2px);
+    background-size: 128px 128px;
+    border: solid #cccccc 5px;
+    margin: 10px;
+}
+  
+.device {
+    width: 64px;
+    height: 64px;
+    background: red;
+    position: absolute;
+}
+.device img {
+    width: 64px;
+    height: 64px;
+    margin: 0;
+}
+
+.label {
+    position: absolute;
+}
+
+.label input{
+    width: 120px;
+}

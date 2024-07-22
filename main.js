@@ -1,4 +1,5 @@
 let list = document.getElementById("list");
+let list2 = document.getElementById("list2");
 let view = document.getElementById("view")
 
 let deviceArr = ["internet", "router", "wireless-router", "switch", "pc", "laptop", "pc-allin", "pc-old", "phone", "printer", "server", "nas"]
@@ -12,7 +13,6 @@ function RespawnObjects() {
     img.title = deviceArr[i];
     img.draggable = false;
     deviceDiv.appendChild(img);
-    //deviceDiv.style.backgroundImage = "url('icons/" + deviceArr[i] + ".png'";
     deviceDiv.draggable = true;
     list.appendChild(deviceDiv);
   }
@@ -48,6 +48,14 @@ Array.prototype.forEach.call(list.children, (element) => {
   }
 });
 
+Array.prototype.forEach.call(list2.children, (element) => {
+  if (element.classList.contains('label')) {
+    element.addEventListener('dragstart', (e) => {
+      e.dataTransfer.setData('text', element.outerHTML);
+    });
+  }
+});
+
 view.addEventListener('dragover', (e) => {
   e.preventDefault();
 });
@@ -72,35 +80,4 @@ view.addEventListener('drop', (e) => {
   droppedElement.addEventListener('dragend', (e) => {
     droppedElement.remove();
   })
-});
-
-// CONTEXT MENU
-view.forEach((child) => {
-  child.addEventListener('contextmenu', (event) => {
-    // Prevent the default context menu from appearing
-    event.preventDefault();
-
-    // Create a popup to display the menu
-    const popup = document.createElement('div');
-    popup.innerHTML = `
-      <ul id="menu">
-        <li><a href="#" id="item1">Item 1</a></li>
-        <li><a href="#" id="item2">Item 2</a></li>
-        <li><a href="#" id="item3">Item 3</a></li>
-      </ul>
-    `;
-    popup.style.position = 'absolute';
-    popup.style.top = `${event.clientY}px`;
-    popup.style.left = `${event.clientX}px`;
-    document.body.appendChild(popup);
-
-    // Add event listener to each menu item
-    const menuItems = popup.querySelectorAll('#menu a');
-    menuItems.forEach((menuItem) => {
-      menuItem.addEventListener('click', (event) => {
-        // Handle the click event for each menu item
-        console.log(`Menu item ${menuItem.textContent} clicked`);
-      });
-    });
-  });
 });
