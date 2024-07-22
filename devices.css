@@ -1,5 +1,13 @@
+:root {
+    --name-color: #1eff00;
+    --ip-color: #3f3fff;
+    --mask-color: #6c6cff;
+    --mac-color: #ffa600;
+    --ipv6-color: #AB44BF;
+}
+
 #view {
-    min-height: calc(100vh - 180px);
+    min-height: calc(100vh - 190px);
     width: calc(100% - 30px);
     background: white;
     background-image: linear-gradient(#cccccc 2px, transparent 2px), linear-gradient(90deg, #cccccc 2px, transparent 2px);
@@ -11,7 +19,6 @@
 .device {
     width: 64px;
     height: 64px;
-    background: red;
     position: absolute;
 }
 .device img {
@@ -22,8 +29,37 @@
 
 .label {
     position: absolute;
+    height: 25px;
+}
+ 
+.label img {
+    height: 25px;
+    padding-right: 3px;
+    float: left;
 }
 
 .label input{
     width: 120px;
+    height: 20px;
+    float: right;
+}
+
+.label input.name {
+    color: var(--name-color);
+}
+
+.label input.ipv4 {
+    color: var(--ip-color);
+}
+
+.label input..mask {
+    color: var(--mask-color);
+}
+
+.label input.ipv6 {
+    color: var(--ipv6-color);
+}
+
+.label input.mac {
+    color: var(--mac-color);
 }
