@@ -66,3 +66,6 @@ h2 {
 #tbdetails div.selected {
   display: block;
 }
+.list .point {
+  margin: 30px;
+}

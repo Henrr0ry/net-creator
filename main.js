@@ -14,6 +14,8 @@ function RespawnObjects() {
     img.draggable = false;
     deviceDiv.appendChild(img);
     deviceDiv.draggable = true;
+    deviceDiv.setAttribute("data-movex", 32)
+    deviceDiv.setAttribute("data-movey", 32)
     list.appendChild(deviceDiv);
   }
 }
@@ -49,7 +51,7 @@ Array.prototype.forEach.call(list.children, (element) => {
 });
 
 Array.prototype.forEach.call(list2.children, (element) => {
-  if (element.classList.contains('label')) {
+  if (element.classList.contains('label') || element.classList.contains('point')) {
     element.addEventListener('dragstart', (e) => {
       e.dataTransfer.setData('text', element.outerHTML);
     });
@@ -60,6 +62,8 @@ view.addEventListener('dragover', (e) => {
   e.preventDefault();
 });
 
+let startpoint = 0;
+
 view.addEventListener('drop', (e) => {
   e.preventDefault();
   const deviceHTML = e.dataTransfer.getData('text');
@@ -67,11 +71,13 @@ view.addEventListener('drop', (e) => {
   const droppedElement = parser.parseFromString(deviceHTML, "text/html").body.children[0];
   droppedElement.draggable = true;
   const rect = view.getBoundingClientRect();
-  const x = e.clientX - 32;
-  const y = e.clientY - 32;
+  const x = e.clientX - droppedElement.getAttribute('data-movex');
+  const y = e.clientY - droppedElement.getAttribute('data-movey');
   droppedElement.style.position = 'absolute';
   droppedElement.style.top = `${y}px`;
   droppedElement.style.left = `${x}px`;
+
+  //element update
   view.appendChild(droppedElement);
 
   droppedElement.addEventListener('dragstart', (e) => {
@@ -80,4 +86,24 @@ view.addEventListener('drop', (e) => {
   droppedElement.addEventListener('dragend', (e) => {
     droppedElement.remove();
   })
+
+  //point update
+  if (droppedElement.classList.contains("point"))
+    {
+      if (droppedElement.getAttribute("data-point") == "none") {
+        droppedElement.setAttribute("data-point", String(startpoint));
+  
+        var temp = 0;
+        Array.prototype.forEach.call(view.children, (element) => {
+          if (element.classList.contains('point')) {
+            if (element.getAttribute("data-point") == startpoint)
+              temp += 1;
+          }});
+        if (temp >= 2) {
+          startpoint += 1;
+          //add line
+          //https://www.youtube.com/watch?v=LgTrwpMCww8
+        }
+      }
+    }
 });
