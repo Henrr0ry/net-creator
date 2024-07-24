@@ -1,9 +1,16 @@
 <?xml version="1.0" encoding="utf-8"?>
 <svg viewBox="0 0 500 500" xmlns="http://www.w3.org/2000/svg">
   <defs/>
-  <rect x="146.312" y="177.505" width="272.649" height="113.355" style="fill: rgb(216, 216, 216); stroke: rgb(0, 0, 0); transform-origin: 282.638px 234.181px;" rx="30.916" ry="30.916" transform="matrix(0.999985, -0.005483, 0.965937, 0.994719, -23.588276, 73.147856)"/>
-  <rect x="134.636" y="155.387" width="250.891" height="99.23" style="fill: rgb(216, 216, 216); stroke: rgb(0, 0, 0); transform-box: fill-box; transform-origin: 50% 50%;" rx="9.616" ry="9.616" transform="matrix(0.999985, -0.005483, 0.965937, 0.994718, 4.93846, 95.246912)"/>
-  <rect x="84.37" y="79.837" width="262.256" height="170.467" style="fill: rgb(216, 216, 216); stroke: rgb(0, 0, 0);" rx="9.616" ry="9.616"/>
-  <rect x="94.86" y="86.831" width="250.891" height="163.473" style="fill: rgb(216, 216, 216); stroke: rgb(0, 0, 0);" rx="9.616" ry="9.616"/>
-  <rect x="107.973" y="98.195" width="223.791" height="137.248" style="paint-order: fill; stroke-miterlimit: 5.43; fill: rgb(0, 165, 255); stroke: rgb(0, 0, 0);" rx="9.616" ry="9.616"/>
+  <g>
+    <path d="M 56.789 277.129 L 222.803 431.597 L 217.659 473.832 L 51.645 319.365 L 56.789 277.129 Z" style="stroke: rgb(0, 0, 0); fill: rgb(181, 181, 181); transform-origin: 78.854px 437.613px;"/>
+    <path d="M 61.68 102.532 L 322.762 15.37 L 320.84 223.529 L 59.758 310.691 L 61.68 102.532 Z" style="stroke: rgb(0, 0, 0); fill: rgb(181, 181, 181); transform-origin: 346.292px 245.138px;"/>
+    <path d="M 68.404 113.317 L 315.672 30.767 L 313.937 218.658 L 66.67 301.207 L 68.404 113.317 Z" style="stroke: rgb(0, 0, 0); fill: rgb(165, 233, 255); transform-origin: 327.971px 221.272px;"/>
+    <path d="M 220.427 451.714 L 480.674 365.894 L 478.249 388.088 L 218.002 473.908 L 220.427 451.714 Z" style="stroke: rgb(0, 0, 0); fill: rgb(181, 181, 181); transform-origin: 597.7px 227.987px;"/>
+    <path d="M 59.841 311.76 L 320.231 224.392 L 480.602 365.88 L 220.212 453.248 L 59.841 311.76 Z" style="stroke: rgb(0, 0, 0); fill: rgb(181, 181, 181); transform-origin: 434.411px 487.109px;"/>
+    <path d="M 53.378 95.683 L 60.866 102.651 L 59.057 311.754 L 51.568 304.786 L 53.378 95.683 Z" style="stroke: rgb(0, 0, 0); fill: rgb(181, 181, 181); transform-origin: 3.556px 1961.7px;"/>
+    <path d="M 54.026 95.163 L 315.627 7.805 L 322.692 14.987 L 61.091 102.345 L 54.026 95.163 Z" style="stroke: rgb(0, 0, 0); fill: rgb(181, 181, 181); transform-origin: 601.563px 101.554px;"/>
+    <path d="M 111.25 330.715 L 326.504 258.491 L 388.048 312.788 L 172.794 385.012 L 111.25 330.715 Z" style="stroke: rgb(0, 0, 0); fill: rgb(135, 135, 135); transform-origin: 359.111px 186.931px;"/>
+    <path d="M 292.434 372.256 L 346.449 354.133 L 375.583 379.837 L 321.569 397.96 L 292.434 372.256 Z" style="stroke: rgb(0, 0, 0); fill: rgb(135, 135, 135); transform-origin: 90.114px 88.492px;"/>
+    <path d="M 85.339 311.222 L 302.875 238.232 L 311.421 245.772 L 93.884 318.761 L 85.339 311.222 Z" style="stroke: rgb(0, 0, 0); fill: rgb(135, 135, 135); transform-origin: 362.919px 25.955px;"/>
+  </g>
 </svg>

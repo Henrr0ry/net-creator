@@ -1,6 +1,9 @@
 let list = document.getElementById("list");
 let list2 = document.getElementById("list2");
 let view = document.getElementById("view")
+let x1 = [];
+let y1 = [];
+let lineTitle = "";
 
 let deviceArr = ["internet", "router", "wireless-router", "switch", "pc", "laptop", "pc-allin", "pc-old", "phone", "printer", "server", "nas"]
 
@@ -89,21 +92,62 @@ view.addEventListener('drop', (e) => {
 
   //point update
   if (droppedElement.classList.contains("point"))
-    {
-      if (droppedElement.getAttribute("data-point") == "none") {
-        droppedElement.setAttribute("data-point", String(startpoint));
-  
-        var temp = 0;
-        Array.prototype.forEach.call(view.children, (element) => {
-          if (element.classList.contains('point')) {
-            if (element.getAttribute("data-point") == startpoint)
-              temp += 1;
-          }});
-        if (temp >= 2) {
-          startpoint += 1;
-          //add line
-          //https://www.youtube.com/watch?v=LgTrwpMCww8
-        }
+  {
+    if (droppedElement.getAttribute("data-point") == "none") {
+      droppedElement.setAttribute("data-point", String(startpoint));
+
+      var temp = 0;
+      Array.prototype.forEach.call(view.children, (element) => {
+        if (element.classList.contains('point')) {
+          if (element.getAttribute("data-point") == startpoint)
+            temp += 1;
+        }});
+      if (temp >= 2) {
+        var line = document.createElement("div");
+        line.setAttribute("data-point", startpoint);
+        line.classList.add("line");
+        line.draggable = false;
+        view.appendChild(line);
+        startpoint += 1;
+        //add line
+        //https://www.youtube.com/watch?v=LgTrwpMCww8
       }
     }
+  }
+  // update line
+
+  setTimeout(() => {
+    for (var i = 0; i <= startpoint; i++) {
+      x1 = [];
+      y1 = [];
+      Array.prototype.forEach.call(view.children, (element) => {
+        if (element.classList.contains("point")){
+          if (element.getAttribute("data-point") == i) {
+            x1.push(parseInt(element.style.getPropertyValue("left").slice(0, -2)));
+            y1.push(parseInt(element.style.getPropertyValue("top").slice(0, -2)));
+            lineTitle = element.getAttribute("title");
+          }
+        }
+      });
+      Array.prototype.forEach.call(view.children, (element) => {
+        if (element.classList.contains("line")){
+          if (element.getAttribute("data-point") == i) {
+            element.setAttribute("title", lineTitle);
+            var xMid = (x1[0] + x1[1]) / 2 + 10;
+            var yMid = (y1[0] + y1[1]) / 2 + 5;
+            
+            var distance = Math.sqrt( ((x1[0] - x1[1]) * (x1[0] - x1[1])) + ((y1[0] - y1[1]) * (y1[0] - y1[1])));
+            element.style.setProperty('width', distance + 'px');
+
+            element.style.setProperty('left', xMid - (distance / 2) + 'px');
+            element.style.setProperty('top', yMid + 'px');
+
+            salopeInRadian = Math.atan2(y1[0] - y1[1], x1[0] - x1[1]);
+            salopeInDegrees = (salopeInRadian * 180) / Math.PI;
+            element.style.setProperty('transform', "rotate(" + salopeInDegrees + "deg)");
+          }
+        }
+      });
+    }
+  }, 20);
 });
