@@ -80,6 +80,21 @@ view.addEventListener('drop', (e) => {
   droppedElement.style.top = `${y}px`;
   droppedElement.style.left = `${x}px`;
 
+  //label update
+  if (droppedElement.classList.contains("label")) {
+    droppedElement.addEventListener('input', (event) => { // Změňuje 'change' na 'input'
+        const currentText = event.target.value;
+
+        // Iterujeme přes children
+        for (const child of droppedElement.children) {
+            // Kontrolujeme, zda je child element typu INPUT
+            if (child.nodeName === "INPUT") {
+                child.placeholder = currentText; // Opravený název vlastnosti 'placeholder'
+            }
+        }
+    });
+}
+
   //element update
   view.appendChild(droppedElement);
 

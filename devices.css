@@ -65,7 +65,29 @@
 .label input.mac {
     color: var(--mac-color);
 }
+/*  placeholders    */
+.label input.name::placeholder {
+    color: var(--name-color);
+}
 
+.label input.ipv4::placeholder {
+    color: var(--ip-color);
+}
+
+.label input.mask::placeholder {
+    color: var(--mask-color);
+}
+
+.label input.ipv6::placeholder {
+    color: var(--ipv6-color);
+}
+
+.label input.mac::placeholder {
+    color: var(--mac-color);
+}
+
+
+/*  lines */
 .point {
     height: 20px;
     /*width: 20px;*/
