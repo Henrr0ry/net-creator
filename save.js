@@ -1,3 +1,5 @@
+let style = "";
+
 async function save() {
     const viewDiv = document.getElementById('view');
     const htmlString = viewDiv.outerHTML;
@@ -6,12 +8,12 @@ async function save() {
     xhr.open('GET', 'devices.css', true);
     xhr.onload = function() {
     if (xhr.status === 200) {
-        console.log(xhr.responseText);
+        style = xhr.responseText;
     }
     };
     xhr.send();
 
-    var htmlContent = [htmlString + "<style>" + xhr + "</style>"];
+    var htmlContent = [htmlString + "<style>" + style + "</style>"];
     var a = document.createElement("a");
     var bl = new Blob(htmlContent, {type: "text/html"});
     a.href = URL.createObjectURL(bl);
