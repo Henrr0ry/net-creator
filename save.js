@@ -1,21 +1,9 @@
-let style = "";
-
 async function save() {
     const viewDiv = document.getElementById('view');
     const htmlString = viewDiv.outerHTML;
 
-    const xhr = new XMLHttpRequest();
-    xhr.open('GET', 'devices.css', true);
-    xhr.onload = function() {
-    if (xhr.status === 200) {
-        style = xhr.responseText;
-    }
-    };
-    xhr.send();
-
-    var htmlContent = [htmlString + "<style>" + style + "</style>"];
     var a = document.createElement("a");
-    var bl = new Blob(htmlContent, {type: "text/html"});
+    var bl = new Blob(htmlString, {type: "text/html"});
     a.href = URL.createObjectURL(bl);
     a.download = "network.html";
     a.hidden = true;
