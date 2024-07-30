@@ -1,0 +1,13 @@
+<?xml version="1.0" encoding="utf-8"?>
+<svg viewBox="0 0 500 500" xmlns="http://www.w3.org/2000/svg">
+  <defs/>
+  <rect x="530.823" y="70.541" width="81.901" height="12.352" style="stroke: rgb(0, 0, 0); fill: rgb(181, 181, 181); transform-origin: 571.773px 76.717px;" transform="matrix(0.950367, -0.311131, 0.829482, 0.780669, -308.192805, 282.928728)"/>
+  <rect x="98.051" y="153.057" width="15.128" height="26.801" style="stroke: rgb(0, 0, 0); fill: rgb(181, 181, 181); transform-origin: 105.615px 166.456px;" transform="matrix(0.705885, 0.708327, -0.039758, 1.376766, 145.684548, 177.662429)"/>
+  <path d="M 123.567 169.097 L 384.649 81.935 L 382.727 290.094 L 121.645 377.256 L 123.567 169.097 Z" style="stroke: rgb(0, 0, 0); fill: rgb(181, 181, 181); transform-origin: 408.179px 311.703px;"/>
+  <path d="M 130.291 179.882 L 377.559 97.332 L 375.824 285.223 L 128.557 367.772 L 130.291 179.882 Z" style="stroke: rgb(0, 0, 0); fill: rgb(165, 233, 255); transform-origin: 389.858px 287.837px;"/>
+  <rect x="182.202" y="261.097" width="28.112" height="45.72" style="stroke: rgb(0, 0, 0); fill: rgb(181, 181, 181); transform-box: fill-box; transform-origin: 50% 50%;" transform="matrix(0.950367, -0.311131, -0.030676, 1.062268, 73.693435, 68.155526)"/>
+  <rect x="522.91" y="70.541" width="80.68" height="12.352" style="stroke: rgb(0, 0, 0); fill: rgb(181, 181, 181); transform-origin: 563.25px 76.717px;" transform="matrix(0.950367, -0.311131, -0.030676, 1.062268, -294.33688, 293.968729)"/>
+  <rect x="98.051" y="53.436" width="15.128" height="9.357" style="stroke: rgb(0, 0, 0); fill: rgb(181, 181, 181); transform-origin: 105.615px 58.114px;" transform="matrix(0.705885, 0.708327, -0.039758, 1.376766, 118.946633, 320.842796)"/>
+  <rect x="1770.864" y="159.052" width="273.227" height="27.85" style="stroke: rgb(0, 0, 0); fill: rgb(181, 181, 181); transform-origin: 1907.47px 172.976px;" transform="matrix(0.948828, -0.315795, 0.827276, 0.778593, -1664.426148, -58.653281)"/>
+  <rect x="193.355" y="853.08" width="29.832" height="149.38" style="stroke: rgb(0, 0, 0); fill: rgb(181, 181, 181); transform-origin: 208.271px 927.761px;" transform="matrix(0.705885, 0.708327, -0.010823, 1.405802, -96.377944, -665.406481)"/>
+</svg>
