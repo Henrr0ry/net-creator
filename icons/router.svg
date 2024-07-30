@@ -1,0 +1,12 @@
+<?xml version="1.0" encoding="utf-8"?>
+<svg viewBox="0 0 500 500" xmlns="http://www.w3.org/2000/svg" xmlns:bx="https://boxy-svg.com">
+  <defs/>
+  <rect x="326" y="11.292" width="209.087" height="46.045" style="stroke: rgb(0, 0, 0); fill: rgb(181, 181, 181); transform-origin: 430.546px 34.314px;" transform="matrix(0.817246, 0.576289, 0.011303, 1.231592, -322.134299, 293.160866)"/>
+  <rect x="474.486" y="11.855" width="304.318" height="48.34" style="stroke: rgb(0, 0, 0); fill: rgb(181, 181, 181); transform-origin: 626.646px 36.024px;" transform="matrix(0.913819, -0.406121, -0.048287, 1.115768, -294.902682, 290.926126)"/>
+  <rect x="468.812" y="44.527" width="300.681" height="181.569" style="stroke: rgb(0, 0, 0); fill: rgb(181, 181, 181); transform-box: fill-box; transform-origin: 50% 50%;" transform="matrix(0.914746, -0.404029, 0.955485, 0.671177, -372.404357, 104.181612)"/>
+  <ellipse style="stroke: rgb(0, 0, 0); fill: rgb(135, 135, 135);" cx="213.524" cy="241.525" rx="98.382" ry="65.543" transform="matrix(0.998844, -0.048061, 0.359436, 0.983862, -55.354205, 7.245082)"/>
+  <rect x="249.37" y="183.763" width="12.542" height="100.472" style="fill: rgb(165, 233, 255); stroke: rgb(165, 233, 255); transform-box: fill-box; transform-origin: 50% 50%;" transform="matrix(0.979266, 0.202581, -0.202581, 0.979266, -5.642616, 4.113703)"/>
+  <rect x="272.315" y="251.071" width="12.542" height="138.105" style="fill: rgb(165, 233, 255); stroke: rgb(165, 233, 255); transform-box: fill-box; transform-origin: 50% 50%;" transform="matrix(0.249012, -0.9685, 0.9685, 0.249012, -21.378537, -83.549919)"/>
+  <path d="M 128.158 109.216 L 147.271 141.183 L 109.044 141.183 L 128.158 109.216 Z" style="stroke: rgb(165, 233, 255); fill: rgb(165, 233, 255); transform-box: fill-box; transform-origin: 50% 50%;" transform="matrix(0.259287, -0.9658, 0.9658, 0.259287, 50.610946, 91.208834)" bx:shape="triangle 109.044 109.216 38.227 31.967 0.5 0 1@2bcbd6e0"/>
+  <path d="M 247.969 176.701 L 271.152 196.168 L 224.785 196.168 L 247.969 176.701 Z" style="fill: rgb(165, 233, 255); stroke: rgb(165, 233, 255); transform-box: fill-box; transform-origin: 50% 50%;" transform="matrix(0.984598, 0.174834, -0.174834, 0.984598, 11.677461, 1.592324)" bx:shape="triangle 224.785 176.701 46.367 19.467 0.5 0 1@26a694cc"/>
+</svg>
