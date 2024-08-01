@@ -167,19 +167,29 @@ view.addEventListener('drop', (e) => {
   }, 20);
 });
 
+/*  ENABLE CORS */
+var instance = axios.create({
+  baseURL: 'http://localhost:54690/api',
+  timeout: 1000,
+  headers: { 
+   'Accept': 'application/json',
+   'Content-Type': 'application/json',
+   'Access-Control-Allow-Origin': '*'
+  }
+});
+
 /*  LOAD CSS  */
-function loadCSS(filename) {
-  const xhr = new XMLHttpRequest();
-  xhr.open('GET', filename, true);
-  xhr.onreadystatechange = function() {
-      if (xhr.readyState === 4) {
-          if (xhr.status === 200) {
-              document.getElementById('dynamic').textContent = xhr.responseText;
-          } else {
-              console.error('Chyba při načítání CSS: ' + xhr.statusText);
-          }
-      }
-  };
-  xhr.send();
-}
-loadCSS('devices.css');
+fetch('devices.css')
+.then(response => {
+  if (!response.ok) {
+    throw new Error('Network response was not ok');
+  }
+  document.getElementById("dynamic-style").innerText = response.text();
+  return response.text();
+})
+.then(data => {
+  console.log(data);
+})
+.catch(error => {
+  console.error('There has been a problem with your fetch operation:', error);
+});
