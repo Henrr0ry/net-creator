@@ -1,6 +1,6 @@
 let list = document.getElementById("list");
 let list2 = document.getElementById("list2");
-let view = document.getElementById("view")
+let canvas = document.getElementById("canvas")
 let x1 = [];
 let y1 = [];
 let lineTitle = "";
@@ -61,19 +61,19 @@ Array.prototype.forEach.call(list2.children, (element) => {
   }
 });
 
-view.addEventListener('dragover', (e) => {
+canvas.addEventListener('dragover', (e) => {
   e.preventDefault();
 });
 
 let startpoint = 0;
 
-view.addEventListener('drop', (e) => {
+canvas.addEventListener('drop', (e) => {
   e.preventDefault();
   const deviceHTML = e.dataTransfer.getData('text');
   const parser = new DOMParser();
   const droppedElement = parser.parseFromString(deviceHTML, "text/html").body.children[0];
   droppedElement.draggable = true;
-  const rect = view.getBoundingClientRect();
+  const rect = canvas.getBoundingClientRect();
   const x = e.clientX - droppedElement.getAttribute('data-movex');
   const y = e.clientY - droppedElement.getAttribute('data-movey');
   droppedElement.style.position = 'absolute';
@@ -82,21 +82,19 @@ view.addEventListener('drop', (e) => {
 
   //label update
   if (droppedElement.classList.contains("label")) {
-    droppedElement.addEventListener('input', (event) => { // Změňuje 'change' na 'input'
+    droppedElement.addEventListener('input', (event) => {
         const currentText = event.target.value;
 
-        // Iterujeme přes children
         for (const child of droppedElement.children) {
-            // Kontrolujeme, zda je child element typu INPUT
             if (child.nodeName === "INPUT") {
-                child.placeholder = currentText; // Opravený název vlastnosti 'placeholder'
+                child.placeholder = currentText;
             }
         }
     });
 }
 
   //element update
-  view.appendChild(droppedElement);
+  canvas.appendChild(droppedElement);
 
   droppedElement.addEventListener('dragstart', (e) => {
     e.dataTransfer.setData('text', droppedElement.outerHTML);
@@ -112,7 +110,7 @@ view.addEventListener('drop', (e) => {
       droppedElement.setAttribute("data-point", String(startpoint));
 
       var temp = 0;
-      Array.prototype.forEach.call(view.children, (element) => {
+      Array.prototype.forEach.call(canvas.children, (element) => {
         if (element.classList.contains('point')) {
           if (element.getAttribute("data-point") == startpoint)
             temp += 1;
@@ -122,7 +120,7 @@ view.addEventListener('drop', (e) => {
         line.setAttribute("data-point", startpoint);
         line.classList.add("line");
         line.draggable = false;
-        view.appendChild(line);
+        canvas.appendChild(line);
         startpoint += 1;
         //add line
         //https://www.youtube.com/watch?v=LgTrwpMCww8
@@ -135,7 +133,7 @@ view.addEventListener('drop', (e) => {
     for (var i = 0; i <= startpoint; i++) {
       x1 = [];
       y1 = [];
-      Array.prototype.forEach.call(view.children, (element) => {
+      Array.prototype.forEach.call(canvas.children, (element) => {
         if (element.classList.contains("point")){
           if (element.getAttribute("data-point") == i) {
             x1.push(parseInt(element.style.getPropertyValue("left").slice(0, -2)));
@@ -144,7 +142,7 @@ view.addEventListener('drop', (e) => {
           }
         }
       });
-      Array.prototype.forEach.call(view.children, (element) => {
+      Array.prototype.forEach.call(canvas.children, (element) => {
         if (element.classList.contains("line")){
           if (element.getAttribute("data-point") == i) {
             element.setAttribute("title", lineTitle);
@@ -167,29 +165,44 @@ view.addEventListener('drop', (e) => {
   }, 20);
 });
 
-/*  ENABLE CORS */
-var instance = axios.create({
-  baseURL: 'http://localhost:54690/api',
-  timeout: 1000,
-  headers: { 
-   'Accept': 'application/json',
-   'Content-Type': 'application/json',
-   'Access-Control-Allow-Origin': '*'
+/*  LOAD CSS  */
+fetch('devices.css')
+  .then(response => {
+      if (!response.ok) {
+          throw new Error('Network response was not ok');
+      }
+      return response.text();
+  })
+  .then(data => {
+    document.getElementById("dynamic-style").innerText = data;
+    console.log(data);
+  })
+  .catch(error => {
+      console.error('There was a problem with your fetch operation:', error);
+  });
+
+
+//  LOAD CANVAS
+canvas.style.width = String(window.innerWidth - 30) + "px";
+canvas.style.height = String(window.innerHeight - 190) + "px";
+
+var canvas_width = document.getElementById("canvas-width");
+var canvas_height = document.getElementById("cavas-height");
+
+canvas_width.addEventListener('keydown', function(event) {
+  if (event.key === 'Enter') {
+      const size = canvas_width.value;
+      if (size) {
+          canvas.style.width = `${size}px`;
+      }
   }
 });
 
-/*  LOAD CSS  */
-fetch('devices.css')
-.then(response => {
-  if (!response.ok) {
-    throw new Error('Network response was not ok');
+canvas_height.addEventListener('keydown', function(event) {
+  if (event.key === 'Enter') {
+      const size = canvas_height.value;
+      if (size) {
+          canvas.style.height = `${size}px`;
+      }
   }
-  document.getElementById("dynamic-style").innerText = response.text();
-  return response.text();
-})
-.then(data => {
-  console.log(data);
-})
-.catch(error => {
-  console.error('There has been a problem with your fetch operation:', error);
 });

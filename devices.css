@@ -6,9 +6,9 @@
     --ipv6-color: #AB44BF;
 }
 
-#view {
-    min-height: calc(100vh - 190px);
-    width: calc(100% - 30px);
+#canvas {
+    min-height: 500px;
+    min-width: 500px;
     background: white;
     background-image: linear-gradient(#cccccc 2px, transparent 2px), linear-gradient(90deg, #cccccc 2px, transparent 2px);
     background-size: 128px 128px;
@@ -22,7 +22,7 @@
     position: absolute;
     z-index: 2;
 }
-.device img {
+.device img, .device svg {
     width: 64px;
     height: 64px;
     margin: 0;
@@ -36,6 +36,7 @@
  
 .label-img {
     height: 25px;
+    max-width: 128px;
     padding-right: 3px;
     float: left;
 }
