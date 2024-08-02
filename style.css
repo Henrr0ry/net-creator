@@ -79,6 +79,7 @@ h2 {
   padding: 10px;
   border: none;
   border-radius: 20px;
+  display: inline-block;
 }
 label {
   color: white;

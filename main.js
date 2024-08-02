@@ -4,15 +4,22 @@ let canvas = document.getElementById("canvas")
 let x1 = [];
 let y1 = [];
 let lineTitle = "";
+let tempbase64 = "";
 
 let deviceArr = ["internet", "router", "wireless-router", "switch", "pc", "laptop", "pc-allin", "pc-old", "phone", "printer", "server", "nas"]
 
-function RespawnObjects() {
+async function RespawnObjects() {
   for (var i = 0; i < deviceArr.length; i++) {
     var deviceDiv = document.createElement('div');
     deviceDiv.className = 'device';
     var img = document.createElement('img');
-    img.src = "icons/" + deviceArr[i] + ".png";
+    await getBase64Image("icons/" + deviceArr[i] + ".png").then(base64 => {
+      tempbase64 = base64;
+      //console.log(base64);
+    }).catch(err => {
+      console.error(err);
+    });
+    img.src = tempbase64;
     img.title = deviceArr[i];
     img.draggable = false;
     deviceDiv.appendChild(img);
@@ -22,6 +29,31 @@ function RespawnObjects() {
     list.appendChild(deviceDiv);
   }
 }
+
+//GET BASE64
+function getBase64Image(url) {
+  return fetch(url)
+    .then(response => {
+      if (!response.ok) throw new Error('Network response was not ok');
+      return response.blob();
+    })
+    .then(blob => {
+      return new Promise((resolve, reject) => {
+        const reader = new FileReader();
+        reader.onloadend = () => resolve(reader.result);
+        reader.onerror = reject; 
+        reader.readAsDataURL(blob);
+      });
+    });
+}
+/*
+// FUNCTION TO GET DATA
+getBase64Image("icons/" + deviceArr[i] + ".png").then(base64 => {
+      console.log(base64); // Zobrazí Base64 výstup
+    }).catch(err => {
+      console.error(err);
+    })
+*/
 
 RespawnObjects();
 //TOOLBAR
@@ -44,26 +76,27 @@ function toolupdate(id) {
 }
 
 //CREATE OBJECT
+setTimeout( () => {
+  Array.prototype.forEach.call(list.children, (element) => {
+    if (element.classList.contains('device')) {
+      element.addEventListener('dragstart', (e) => {
+        e.dataTransfer.setData('text', element.outerHTML);
+      });
+    }
+  });
 
-Array.prototype.forEach.call(list.children, (element) => {
-  if (element.classList.contains('device')) {
-    element.addEventListener('dragstart', (e) => {
-      e.dataTransfer.setData('text', element.outerHTML);
-    });
-  }
-});
+  Array.prototype.forEach.call(list2.children, (element) => {
+    if (element.classList.contains('label') || element.classList.contains('point')) {
+      element.addEventListener('dragstart', (e) => {
+        e.dataTransfer.setData('text', element.outerHTML);
+      });
+    }
+  });
 
-Array.prototype.forEach.call(list2.children, (element) => {
-  if (element.classList.contains('label') || element.classList.contains('point')) {
-    element.addEventListener('dragstart', (e) => {
-      e.dataTransfer.setData('text', element.outerHTML);
-    });
-  }
-});
-
-canvas.addEventListener('dragover', (e) => {
-  e.preventDefault();
-});
+  canvas.addEventListener('dragover', (e) => {
+    e.preventDefault();
+  });
+}, 1000);
 
 let startpoint = 0;
 
@@ -175,7 +208,7 @@ fetch('devices.css')
   })
   .then(data => {
     document.getElementById("dynamic-style").innerText = data;
-    console.log(data);
+    //console.log(data);
   })
   .catch(error => {
       console.error('There was a problem with your fetch operation:', error);
@@ -187,7 +220,7 @@ canvas.style.width = String(window.innerWidth - 30) + "px";
 canvas.style.height = String(window.innerHeight - 190) + "px";
 
 var canvas_width = document.getElementById("canvas-width");
-var canvas_height = document.getElementById("cavas-height");
+var canvas_height = document.getElementById("canvas-height");
 
 canvas_width.addEventListener('keydown', function(event) {
   if (event.key === 'Enter') {
