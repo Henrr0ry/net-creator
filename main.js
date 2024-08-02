@@ -124,7 +124,7 @@ canvas.addEventListener('drop', (e) => {
             }
         }
     });
-}
+  }
 
   //element update
   canvas.appendChild(droppedElement);
