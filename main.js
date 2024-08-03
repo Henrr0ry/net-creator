@@ -141,6 +141,7 @@ canvas.addEventListener('drop', (e) => {
   {
     if (droppedElement.getAttribute("data-point") == "none") {
       droppedElement.setAttribute("data-point", String(startpoint));
+      canvas.setAttribute("data-startpoint", String(startpoint + 1));
 
       var temp = 0;
       Array.prototype.forEach.call(canvas.children, (element) => {

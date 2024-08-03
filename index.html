@@ -2,9 +2,10 @@
 <html>
     <head>
         <title>Net Creator</title>
+        <link rel="shortcut icon" href="favicon.ico" type="image/x-icon">
         <meta name="description" content="Tool for creation computer network topology">
         <meta name="author" content="Henrr0ry">
-        <link rel="stylesheet" href="style.css">
+        <link rel="stylesheet" href="style.css?v=1">
         <!--<link rel="stylesheet" href="devices.css">-->
     </head>
     <body>
@@ -23,11 +24,11 @@
                         <label for="canvas-height">Canvas Height</label>
                         <input type="text" name="cavas-height" id="canvas-height" style="margin-top: 10px;">
                     </div>
+                    <script src="save.js?v=4"></script>
                     <button class="btn" onclick="save()">Save Network</button>
 
                     <input type="file" id="fileInput" accept=".html" style="width: 200px;"/>
                     <button class="btn" onclick="load()">Load Network</button>
-                    <script src="save.js?v=2"></script>
                 </div>
                 <div id="c1" class="c selected">
                     <div class="panel">
@@ -96,6 +97,6 @@
             </div>
         </main>
         <style id="dynamic-style"></style>
-        <script src="main.js?v=2"></script>
+        <script src="main.js?v=3"></script>
     </body>
 </html>

@@ -105,3 +105,13 @@
     position: absolute;
     z-index: 0;
 }
+
+/*  scrollbar */
+html ::-webkit-scrollbar {
+    background: transparent;
+ }
+ html ::-webkit-scrollbar-thumb {
+     background: #002c8b;
+     border-radius: 10px;
+     scrollbar-width: thin;
+}

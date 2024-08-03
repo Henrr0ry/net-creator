@@ -85,3 +85,12 @@ label {
   color: white;
   padding: 5px;
 }
+/*  scrollbar */
+html ::-webkit-scrollbar {
+  background: transparent;
+  scrollbar-width: thin;
+}
+html ::-webkit-scrollbar-thumb {
+  background: #002c8b;
+  border-radius: 10px;
+}
