@@ -96,7 +96,7 @@ setTimeout( () => {
   canvas.addEventListener('dragover', (e) => {
     e.preventDefault();
   });
-}, 1000);
+}, 1500);
 
 let startpoint = 0;
 
@@ -196,7 +196,7 @@ canvas.addEventListener('drop', (e) => {
         }
       });
     }
-  }, 20);
+  }, 50);
 });
 
 /*  LOAD CSS  */
